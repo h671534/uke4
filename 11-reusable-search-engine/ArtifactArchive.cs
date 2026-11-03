@@ -7,9 +7,21 @@ public class ArtifactArchive
         artifacts.Add(artifact);
     }
 
-    public List<Artifact> FindArtifacts(Func<Artifact, bool> condition)
+    public List<Artifact> FindArtifacts(Func<Artifact, bool> condition) //tar lmbda som parameter
+
     {
         // TODO: Bruk condition til å filtrere og returner en ny liste.
-        return new List<Artifact>();
+
+        List<Artifact> matchingArtifacts = new List<Artifact>();
+
+
+        foreach (Artifact artifact in artifacts)
+        {
+            if (condition(artifact))
+            {
+                matchingArtifacts.Add(artifact);
+            }
+        }
+        return matchingArtifacts;
     }
 }

@@ -11,7 +11,9 @@ public class DroneVault
     public List<Drone> GetDrones()
     {
         // TODO: Returner en ny List<Drone> som inneholder samme objekter.
-        return new List<Drone>();
+
+        var copy = new List<Drone>(drones); // Lager en ny liste som er en kopi av den interne listen.
+        return new List<Drone>(copy);
     }
 
     public void PrintAll()

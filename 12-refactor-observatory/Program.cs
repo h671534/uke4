@@ -24,10 +24,12 @@ while (true)
         {
             Console.WriteLine($"{artifact.Name} | {artifact.Origin} | {artifact.Risk}");
         }
+
     }
     else if (choice == "2")
     {
         List<Artifact> highRisk = artifacts.Where(a => a.Risk >= 60).ToList();
+
         foreach (Artifact artifact in highRisk)
         {
             Console.WriteLine($"{artifact.Name} | {artifact.Risk}");
@@ -62,16 +64,16 @@ while (true)
 
 // TODO: Refaktorer den fungerende monolitten til tydelige ansvar/layers.
 
-public class Artifact
-{
-    public string Name { get; set; }
-    public string Origin { get; set; }
-    public int Risk { get; set; }
+// public class Artifact
+// {
+//     public string Name { get; set; }
+//     public string Origin { get; set; }
+//     public int Risk { get; set; }
 
-    public Artifact(string name, string origin, int risk)
-    {
-        Name = name;
-        Origin = origin;
-        Risk = risk;
-    }
-}
+//     public Artifact(string name, string origin, int risk)
+//     {
+//         Name = name;
+//         Origin = origin;
+//         Risk = risk;
+//     }
+// }
