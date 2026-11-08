@@ -12,7 +12,7 @@ public class ArtifactArchive
     {
         // TODO: Bruk condition til å filtrere og returner en ny liste.
 
-        List<Artifact> matchingArtifacts = new List<Artifact>();
+        List<Artifact> matchingArtifacts = new List<Artifact>();// ny liste som skal inneholde de filtrerte artifactene.
 
 
         foreach (Artifact artifact in artifacts)

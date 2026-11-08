@@ -19,7 +19,12 @@ public class Archive
         // Dette gjør at endringer i den returnerte listen(outsideList) ikke påvirker den interne listen.
 
         // var copy = new List<string>(entries);// eller kan bruke entries.ToList() for å lage en kopi av listen.
-        List<string> copy = new List<string>(entries);
+
+
+        // return entries; // vi får tom liste 
+
+
+        List<string> copy = new List<string>(entries);   // får vi 4 i count
 
         return new List<string>(copy);
     }

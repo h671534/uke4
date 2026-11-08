@@ -1,11 +1,8 @@
-List<Artifact> artifacts = new List<Artifact>
-{
-    new Artifact("Echo Stone", "Moon", 73),
-    new Artifact("Broken Compass", "Earth", 12),
-    new Artifact("Glass Seed", "Mars", 48),
-    new Artifact("Signal Cube", "Moon", 91),
-    new Artifact("Cold Lens", "Europa", 28)
-};
+using System.Runtime.InteropServices;
+
+
+
+var kall = new ArtifactArchive();
 
 while (true)
 {
@@ -20,7 +17,7 @@ while (true)
 
     if (choice == "1")
     {
-        foreach (Artifact artifact in artifacts)
+        foreach (var artifact in kall.Alleartifacts())
         {
             Console.WriteLine($"{artifact.Name} | {artifact.Origin} | {artifact.Risk}");
         }
@@ -28,11 +25,11 @@ while (true)
     }
     else if (choice == "2")
     {
-        List<Artifact> highRisk = artifacts.Where(a => a.Risk >= 60).ToList();
 
-        foreach (Artifact artifact in highRisk)
+
+        foreach (var arti in kall.artifactsRisk())
         {
-            Console.WriteLine($"{artifact.Name} | {artifact.Risk}");
+            Console.WriteLine($"{arti.Name} | {arti.Risk}");
         }
     }
     else if (choice == "3")
@@ -40,17 +37,24 @@ while (true)
         Console.Write("Origin: ");
         string? origin = Console.ReadLine();
 
-        if (!string.IsNullOrWhiteSpace(origin))
+        if (string.IsNullOrWhiteSpace(origin))
         {
-            List<Artifact> matches = artifacts
-                .Where(a => a.Origin.Equals(origin, StringComparison.OrdinalIgnoreCase))
-                .ToList();
 
-            foreach (Artifact artifact in matches)
+            Console.WriteLine("Not found ArtifactOrigin");
+
+        }
+        else
+        {
+
+
+            foreach (var art in kall.FindOrgin(origin))
             {
-                Console.WriteLine(artifact.Name);
+
+                Console.WriteLine("Artifact name er :" + art.Name + " " + art.Origin);
             }
         }
+
+
     }
     else if (choice == "4")
     {
@@ -64,16 +68,3 @@ while (true)
 
 // TODO: Refaktorer den fungerende monolitten til tydelige ansvar/layers.
 
-// public class Artifact
-// {
-//     public string Name { get; set; }
-//     public string Origin { get; set; }
-//     public int Risk { get; set; }
-
-//     public Artifact(string name, string origin, int risk)
-//     {
-//         Name = name;
-//         Origin = origin;
-//         Risk = risk;
-//     }
-// }

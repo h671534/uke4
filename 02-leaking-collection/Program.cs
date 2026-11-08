@@ -11,7 +11,12 @@ outsideList.Clear(); // Dette vil tømme  Ytre listen, og dermed også den inter
 
 
 // TODO del A: Clear outsideList og observer archive.Count. // 0
-// TODO del B: Fiks GetEntries(), og prøv eksperimentet på nytt. // 3
+
+// svar        GetEntries() som return entries får 0
+
+// TODO del B: Fiks GetEntries(), og prøv eksperimentet på nytt. // 4
+
+//              GetEntries() som return copy av entries får count 4
 
 
 Console.WriteLine($"Archive count: {archive.Count}");

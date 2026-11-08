@@ -10,30 +10,33 @@ List<Artifact> artifacts = new List<Artifact>
 
 
 // TODO: Lag tre separate Where-queries.
-var moonArtifacts = artifacts.Where(a => a.Origin == "Moon");
-var eArtifacts = artifacts.Where(a => a.Name.Contains("e"));
+string[] moonArtifacts = artifacts.Where(a => a.Origin == "Moon").Select(a => a.Name).ToArray();
 
 
-var highRiskArtifacts = artifacts.Where(a => a.Risk >= 60);
+string[] eArtifacts = artifacts.Where(a => a.Name.Contains("e") || a.Name.Contains("E")).Select(a => a.Name).ToArray();
+
+int[] highRiskArtifacts = artifacts.Where(a => a.Risk >= 60).Select(a => a.Risk).ToArray();
 
 
 Console.WriteLine("Moon Artifacts:");
-foreach (var artifact in moonArtifacts)
+foreach (string artifact in moonArtifacts)
 {
-    Console.WriteLine($"{artifact.Origin} - {artifact.Name}");
+    Console.WriteLine($"{artifact}");
 
 }
 
-Console.WriteLine("Artifacts with 'e' in the name:");
-foreach (var artifact in eArtifacts)
+Console.WriteLine("Artifacts with 'e' or 'E' in the name:");
+foreach (string artifact in eArtifacts)
 {
-    Console.WriteLine($"{artifact.Name}");
+    Console.WriteLine($"{artifact}");
 }
 
 Console.WriteLine("High Risk Artifacts (Risk >= 60):");
-foreach (var artifact in highRiskArtifacts)
+foreach (int artifact in highRiskArtifacts)
 {
-    Console.WriteLine($" {artifact.Risk}");
+    Console.WriteLine($" {artifact}");
 }
+
+
 
 
